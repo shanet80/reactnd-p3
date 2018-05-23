@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 
-export function getDecks(decks) {
+export function recieveDecks(decks) {
 	return {
 		type: types.GET_DECKS,
 		decks,
@@ -16,7 +16,7 @@ export function addDeck(title) {
 
 export function addCard(title, card) {
 	return {
-		type: type.ADD_CARD,
+		type: types.ADD_CARD,
 		title,
 		card,
 	};

@@ -16,7 +16,7 @@ export default function reducer(state = {}, action) {
 					questions: [],
 				},
 			};
-		case type.ADD_CARD:
+		case types.ADD_CARD:
 			return {
 				...state,
 				[title]: {
