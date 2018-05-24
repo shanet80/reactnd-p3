@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
 		backgroundColor: blue,
 		borderRadius: 10,
 		borderWidth: 1,
-		shadowRadius: 3,
 	},
 	submitText: {
 		color: white,

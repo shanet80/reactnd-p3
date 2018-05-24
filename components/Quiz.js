@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 	},
 	card: {
 		flexDirection: 'row',
-		justifyContent: 'flex-start',
+		justifyContent: 'space-around',
 		alignItems: 'center',
 		backgroundColor: white,
 		borderRadius: Platform.OS === 'ios' ? 16 : 1,
@@ -29,14 +29,13 @@ const styles = StyleSheet.create({
 		marginLeft: 10,
 		marginRight: 10,
 		marginBottom: 10,
-		shadowRadius: 3,
-		shadowOpacity: 0.8,
 	},
 	item: {
+		height: 50,
 		marginBottom: 10,
 	},
 	itemText: {
-		fontSize: 12,
+		fontSize: 24,
 	},
 	button: {
 		marginRight: 40,
@@ -49,13 +48,6 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		borderColor: 'transparent',
 		borderWidth: 1,
-		shadowRadius: 3,
-		shadowOpacity: 0.8,
-		shadowColor: 'rgba(0,0,0,.24)',
-		shadowOffset: {
-			width: 0,
-			height: 3,
-		},
 	},
 	submitText: {
 		color: lightGray,
@@ -114,18 +106,6 @@ class Quiz extends React.Component {
 			}
 		});
 	}
-
-	handleCorrectAnswer = () => {
-		this.setState((state) => ({
-			correctAnswers: state.correctAnswers + 1,
-		}));
-		this.nextQuestion();
-	};
-
-	handleIncorrectAnswer = () => {
-		this.nextQuestion();
-	};
-
 	restartQuiz = () => {
 		this.props.navigation.navigate('Quiz', {
 			id: this.props.navigation.state.params.id,
@@ -138,6 +118,17 @@ class Quiz extends React.Component {
 			title: this.props.navigation.state.params.id,
 			...this.props.navigation.state.params,
 		});
+	};
+
+	handleCorrectAnswer = () => {
+		this.setState((state) => ({
+			correctAnswers: state.correctAnswers + 1,
+		}));
+		this.nextQuestion();
+	};
+
+	handleIncorrectAnswer = () => {
+		this.nextQuestion();
 	};
 
 	render() {
@@ -182,21 +173,26 @@ class Quiz extends React.Component {
 					Click on the question to reveal the answer, and click it back to see
 					the question again
 				</Text>
+
 				<FlipCard
 					style={styles.card}
 					perspective={100}
 					alignWidth={true}
 					alignHeight={true}
 				>
+					{/* Question */}
 					<View style={styles.item}>
 						<Text style={styles.itemText}>{item.question}</Text>
 					</View>
 
+					{/* Answer */}
 					<View style={styles.item}>
 						<Text style={styles.itemText}>{item.answer}</Text>
 					</View>
 				</FlipCard>
+
 				<Text style={styles.howTo}>Cards left: {leftQuestions}</Text>
+
 				<TouchableOpacity
 					style={[styles.button, { backgroundColor: green }]}
 					onPress={this.handleCorrectAnswer}

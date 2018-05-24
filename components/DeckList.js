@@ -23,13 +23,6 @@ const styles = StyleSheet.create({
 		marginLeft: 10,
 		marginRight: 10,
 		marginTop: 17,
-		shadowRadius: 3,
-		shadowOpacity: 0.8,
-		shadowColor: 'rgba(0,0,0,.24)',
-		shadowOffset: {
-			width: 0,
-			height: 3,
-		},
 	},
 	title: {
 		fontSize: 21,
