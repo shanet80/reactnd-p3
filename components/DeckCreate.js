@@ -57,6 +57,9 @@ class DeckCreate extends React.Component {
 	submit = () => {
 		const { title } = this.state;
 		this.props.addDeck(title);
+		if (!title) {
+			return alert('Title is required');
+		}
 		saveDeckTitle(title);
 		// Resetting the title to null
 		this.setState({ title: '' });

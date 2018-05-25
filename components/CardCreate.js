@@ -58,6 +58,9 @@ class CardCreate extends React.Component {
 		const { question, answer } = this.state;
 		const card = { question, answer };
 		const { title } = this.props;
+		if (!question || !answer) {
+			return alert('Both fields are required');
+		}
 		this.props.dispatch(addCard(title, card));
 		addCardToDeck(title, card);
 		// Resetting the state to null
