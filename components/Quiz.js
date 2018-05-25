@@ -107,10 +107,12 @@ class Quiz extends React.Component {
 		});
 	}
 	restartQuiz = () => {
-		this.props.navigation.navigate('Quiz', {
-			id: this.props.navigation.state.params.id,
-			...this.props.navigation.state.params,
+		const { deck } = this.props;
+		this.setState({
+			questions: deck.questions.map((item, index) => index),
+			correctAnswers: 0,
 		});
+		this.nextQuestion();
 	};
 
 	goBackToDeck = () => {
